@@ -597,14 +597,14 @@ func cloneGitRepo(trashDir, repoDir string, i conf.Import, insecure bool) error 
 		logrus.WithFields(logrus.Fields{"err": err, "repoDir": repoDir}).Error("os.RemoveAll() failed")
 		return err
 	}
-	args := []string{"get", "-d", "-f", "-u"}
-	if insecure {
-		args = append(args, "-insecure")
-	}
-	args = append(args, i.Package)
-	if bytes, err := exec.Command("go", args...).CombinedOutput(); err != nil {
-		logrus.WithFields(logrus.Fields{"err": err}).Debugf("`go %s` returned err:\n%s", strings.Join(args, " "), bytes)
-	}
+	// args := []string{"get", "-d", "-f", "-u"}
+	// if insecure {
+	// 	args = append(args, "-insecure")
+	// }
+	// args = append(args, i.Package)
+	// if bytes, err := exec.Command("go", args...).CombinedOutput(); err != nil {
+	// 	logrus.WithFields(logrus.Fields{"err": err}).Debugf("`go %s` returned err:\n%s", strings.Join(args, " "), bytes)
+	// }
 	if err := os.MkdirAll(repoDir, 0755); err != nil {
 		logrus.WithFields(logrus.Fields{"err": err, "repoDir": repoDir}).Error("os.MkdirAll() failed")
 		return err
